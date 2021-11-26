@@ -3,6 +3,7 @@ import React, { useState } from "react";
 function App() {
   const [name, setName] = useState("");
   const [h1_Text, setHeading] = useState("");
+  const [isMousedOver, setMouseOver] = useState(false);
 
   function handle_change(event) {
     setName(event.target.value);
@@ -10,6 +11,10 @@ function App() {
     // console.log(event);
     // console.log(event.target.type);
     // console.log(event.target.placeholder);
+  }
+
+  function handleMouseOver() {
+    setMouseOver(!isMousedOver);
   }
 
   function handle_click(event) {
@@ -29,7 +34,14 @@ function App() {
           placeholder="What's your name?"
           value={name}
         />
-        <button type="submit">Submit</button>
+        <button
+          style={{ backgroundColor: isMousedOver ? "Yellow" : "white" }}
+          type="submit"
+          onMouseOver={handleMouseOver}
+          onMouseOut={handleMouseOver}
+        >
+          Submit
+        </button>
       </form>
     </div>
   );
